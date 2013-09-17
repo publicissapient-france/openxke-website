@@ -1,0 +1,821 @@
+/*openxke colors*/
+
+@darkgrey: #303030;
+@grey: #767676;
+@lightgrey: #ababab;
+@turquoise: #1abfd3;
+@xebiamedium: #6a205f;
+@xebiahardcorepink: #b60051;
+@xebiapale:#862978;
+@xebiadark:#571850;
+
+/*ubuntu fonts*/
+
+@font-face {
+    font-family: 'ubuntulight';
+    src: url('../fonts/ubuntu-l-webfont.eot');
+    src: url('../fonts/ubuntu-l-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/ubuntu-l-webfont.woff') format('woff'),
+         url('../fonts/ubuntu-l-webfont.ttf') format('truetype'),
+         url('../fonts/ubuntu-l-webfont.svg#ubuntulight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ubuntulight_italic';
+    src: url('../fonts/ubuntu-li-webfont.eot');
+    src: url('../fonts/ubuntu-li-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/ubuntu-li-webfont.woff') format('woff'),
+         url('../fonts/ubuntu-li-webfont.ttf') format('truetype'),
+         url('../fonts/ubuntu-li-webfont.svg#ubuntulight_italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ubuntumedium';
+    src: url('../fonts/ubuntu-m-webfont.eot');
+    src: url('../fonts/ubuntu-m-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/ubuntu-m-webfont.woff') format('woff'),
+         url('../fonts/ubuntu-m-webfont.ttf') format('truetype'),
+         url('../fonts/ubuntu-m-webfont.svg#ubuntumedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ubuntumedium_italic';
+    src: url('../fonts/ubuntu-mi-webfont.eot');
+    src: url('../fonts/ubuntu-mi-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/ubuntu-mi-webfont.woff') format('woff'),
+         url('../fonts/ubuntu-mi-webfont.ttf') format('truetype'),
+         url('../fonts/ubuntu-mi-webfont.svg#ubuntumedium_italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/*mixins*/
+.rounded-corners (@radius: 6px 6px 6px 6px) {
+  border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  -o-border-radius: @radius;
+  -ms-border-radius: @radius;
+}
+
+.box-shadow (@x, @y, @blur, @color) {
+  @value: @x @y @blur @color;
+  box-shadow: @value;
+  -moz-box-shadow: @value;
+  -webkit-box-shadow: @value;
+  -o-box-shadow: @value;
+  -ms-box-shadow: @value;
+}
+
+.box-shadow-inset (@x, @y, @blur, @color) {
+  box-shadow: @x @y @blur @color inset;
+  -moz-box-shadow: @x @y @blur @color inset;
+  -webkit-box-shadow: @x @y @blur @color inset;
+  -o-box-shadow: @x @y @blur @color inset;
+  -ms-box-shadow: @x @y @blur @color inset;
+}
+
+.transition (@values, @duration) {
+  transition: @values @duration;
+  -moz-transition: @values @duration;
+  -webkit-transition: @values @duration;
+  -ms-transition: @values @duration;
+  -o-transition: @values @duration;
+}
+
+.cleanfloat () {
+  clear: both;
+  display: block;
+  content: "";
+}
+
+.gradient(@color: #f5f5f5, @start: #eee, @stop: #fff) {
+  background: @color;
+  background: -webkit-gradient(linear,
+                               left bottom,
+                               left top,
+                               color-stop(0, @start),
+                               color-stop(1, @stop));
+  background: -ms-linear-gradient(bottom,
+                                  @start,
+                                  @stop);
+  background: -moz-linear-gradient(center bottom,
+                                   @start 0%,
+                                   @stop 100%);
+  background: -o-linear-gradient(@stop,
+                                 @start);
+  filter: e(%("progid:dximagetransform.microsoft.gradient(startcolorstr='%d', endcolorstr='%d', gradienttype=0)",@stop,@start));
+}
+
+
+/*general*/
+.set960 {
+	margin: 0 auto;
+	width: 960px;
+}
+.clear {
+	display: block;
+	visibility: hidden;
+	clear: both;
+	content: "";
+}
+body {
+	color: @darkgrey;
+	font-family: 'ubuntulight', arial, sans-serif;
+	font-size: 15px;
+	width: 100%;
+	-webkit-font-smoothing: antialiased; /* fix for webkit rendering */
+	-webkit-text-size-adjust: 100%;
+
+}
+b, strong {
+	font-family: 'ubuntumedium', arial bold, sans-serif;
+	font-weight: normal;
+}
+i, em {
+	font-family: 'ubuntulight_italic', arial italic, sans-serif;
+	font-style: normal;
+}
+b i, b em, strong i, strong em, i b, i strong, em b, em strong {
+	font-family: 'ubuntumedium_italic', arial bold italic, sans-serif;
+	font-weight: normal;
+	font-style: normal;
+}
+* {
+	-moz-box-sizing: border-box;
+}
+
+
+
+/*design*/
+
+	.permanent-menu {
+		position: fixed;
+		width: 100%;
+		height: 81px;
+		bottom: 0;
+		left: 0;
+		background-color: white;
+		.box-shadow(0, 0, 29px, rgba(0,0,0,.49));
+		
+		.logo {
+			float: left;
+			width: 171px;
+				
+				a {
+					width: 171px;
+					height: 31px;
+					margin: 25px 0;
+					display: block;
+					background: transparent url('../img/logo.png') top left no-repeat;
+					opacity: 1;
+					-moz-opacity: 1;
+					-webkit-opacity: 1;
+					-o-opacity: 1;
+					.transition (opacity, .5s);
+					
+					span {
+						display: none;
+					}
+				}
+				a:hover {
+					opacity: .7;
+					-moz-opacity: .7;
+					-webkit-opacity: .7;
+					-o-opacity: .7;
+				}
+		}
+
+		@media only screen and (max-width: 767px) {
+			.logo {
+				width: 88px;
+				float: none;
+					a {
+						width: 88px;
+						height: 16px;
+						margin: 10px;
+						background: transparent url('../img/ninilogo.png') top left no-repeat;
+					}
+			}
+		}
+
+
+		.logoxebia {
+			float: right;
+			width: 171px;
+				
+				a {
+					width: 171px;
+					height: 31px;
+					margin: 25px 0;
+					display: block;
+					background: transparent url('../img/logoxebia.png') top left no-repeat;
+					opacity: 1;
+					-moz-opacity: 1;
+					-webkit-opacity: 1;
+					-o-opacity: 1;
+					.transition (opacity, .5s);
+					
+					span {
+						display: none;
+					}
+				}
+				a:hover {
+					opacity: .7;
+					-moz-opacity: .7;
+					-webkit-opacity: .7;
+					-o-opacity: .7;
+				}
+		}
+
+		@media only screen and (max-width: 767px) {
+			.logoxebia {
+				width: 88px;
+				float: none;
+					a {
+						display: none;
+						background: transparent url('../img/ninilogoxebia.png') top left no-repeat;
+					}
+			}
+		}
+
+		.nav {
+			padding: 0;
+			text-align: right;
+			width: 459px;
+			float: right;
+			
+			li {
+				padding: 0;
+				margin: 0;
+				list-style-type: none;
+				display: inline-block;
+				font-size: 22px;
+				line-height: 81px;
+				letter-spacing: -0.05em;
+				margin: 0 50px 0 0;
+				
+				a {
+					color: @darkgrey;
+					text-decoration: none;
+					.transition (color, .5s);
+				}
+				a:hover, a.selected {
+					color: @turquoise;
+				}
+			}
+		}
+		
+		@media only screen and (max-width: 767px) {
+			.nav {
+				padding: 0 0 0 10px;
+				text-align: left;
+				width: 100%;
+				float: none;
+			
+				li {
+					font-size: 11px;
+					letter-spacing: none;
+					margin: 0 10px 0 0;
+					text-transform: uppercase;
+					font-family: 'ubuntumedium', Arial bold, sans-serif;
+					
+					a {
+						color: @darkgrey;
+						text-decoration: none;
+						.transition (color, .5s);
+						display: block;
+						line-height: 14px;
+					}
+					a:hover, a.selected {
+						color: @turquoise;
+					}
+				}
+				
+			}
+		}
+		.legal-com {
+			float: right;
+			width: 130px;
+			color: @grey;
+			text-align: right;
+			font-size: 11px;
+			font-family: 'ubuntumedium', Arial bold, sans-serif;
+			text-align: right;
+			text-transform: uppercase;
+			line-height: 18px;
+			padding: 21px 0;
+			cursor: pointer;
+			
+			a {
+				display: block;
+				color: @grey;
+				text-decoration: none;
+				.transition (color, .5s);
+			}
+			a:hover {
+				color: @turquoise;
+			}
+		}
+	}
+	@media only screen and (max-width: 767px) {
+		.permanent-menu {
+			height: 70px;
+		}
+	}
+	
+	.page {
+		padding: 60px 0 250px 0;
+	}
+	@media only screen and (max-width: 767px) {
+		.page {
+			padding: 30px 0 30px 0;
+		}
+	}
+	
+	#home {
+		background: white url('../img/xke-bg.jpg') top center repeat-x;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		-webkit-background-size: 1960px 1031px;
+		height: 1111px;
+	}
+	@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+		#home {
+			-webkit-background-size: 1325px 696px;
+			height: 900px;
+		}
+	}
+	@media only screen and (max-width: 767px) {
+		#home {
+			-webkit-background-size: 800px 420px;
+			height: 480px;
+		}
+	}
+	#evenement {
+		.box-shadow(0, -50px, 50px, white);
+		background: white url('../img/event.png') top center no-repeat;	
+	}
+	#programme {
+		background: white url('../img/prog.png') top center no-repeat;
+	}
+
+	.editorial-content-on-white {
+		color: @darkgrey;
+		
+		p {
+			text-align: justify;
+			line-height: 1.4em;
+			padding: 0 0 1.4em 0;;
+		}
+		
+		h2 {
+			font-weight: normal;
+			font-size: 60px;
+			text-transform: uppercase;
+			letter-spacing: -0.05em;
+			color: @xebiamedium;
+			margin: 0 0 0.25em 0;
+		}
+		@media only screen and (max-width: 767px) {
+			h2 {
+				font-size: 30px;
+			}
+		}
+		
+		h3 {
+			font-weight: normal;
+			font-size: 28px;
+			font-family: 'ubuntumedium_italic', arial bold italic, sans-serif;
+			color: @turquoise;
+			padding: 0 0 20px 0;
+		}
+		
+		h4 {
+			color: #6c3464;
+			font-size: 20px;
+			font-weight: normal;
+			padding: 0 0 10px 0;
+		}
+		
+		h5 {
+			font-family: 'ubuntumedium_italic', arial bold italic, sans-serif;
+			color: @lightgrey;
+			font-size: 11px;
+		}
+		
+		ul {
+		
+			li {
+			
+			}
+		}
+	}
+	
+	.editorial-content-on-purple {
+		color: white;
+		background: @xebiamedium;
+		
+		p {
+			text-align: justify;
+			line-height: 1.4em;
+			padding: 0 0 1.4em 0;;
+		}
+		
+		h2 {
+			font-weight: normal;
+			font-size: 60px;
+			text-transform: uppercase;
+			letter-spacing: -0.05em;
+			color: white;
+			margin: 0 0 0.25em 0;
+		}
+		@media only screen and (max-width: 767px) {
+			h2 {
+				font-size: 30px;
+			}
+		}
+		
+		h3 {
+			font-weight: normal;
+			font-size: 28px;
+			font-family: 'ubuntumedium_italic', arial bold italic, sans-serif;
+			color: @turquoise;
+			padding: 0 0 20px 0;
+		}
+		
+		h4 {
+			color: white;
+			font-size: 20px;
+			font-weight: normal;
+			padding: 0 0 10px 0;
+		}
+		
+		h5 {
+			font-family: 'ubuntumedium_italic', arial bold italic, sans-serif;
+			color: @xebiapale;
+			font-size: 11px;
+		}
+		
+		ul {
+		
+			li {
+			
+			}
+		}
+	}
+	
+	
+	
+	.editorial-content-on-blue {
+		color: white;
+		background: @turquoise;
+		
+		p {
+			text-align: justify;
+			line-height: 1.4em;
+			padding: 0 0 1.4em 0;;
+		}
+		
+		h2 {
+			font-weight: normal;
+			font-size: 60px;
+			text-transform: uppercase;
+			letter-spacing: -0.05em;
+			color: white;
+			margin: 0 0 0.25em 0;
+		}
+		@media only screen and (max-width: 767px) {
+			h2 {
+				font-size: 30px;
+			}
+		}
+		
+		h3 {
+			font-weight: normal;
+			font-size: 28px;
+			font-family: 'ubuntumedium_italic', arial bold italic, sans-serif;
+			color: white;
+			padding: 0 0 20px 0;
+		}
+		
+		h4 {
+			color: white;
+			font-size: 20px;
+			font-weight: normal;
+			padding: 0 0 10px 0;
+		}
+		
+		h5 {
+			font-family: 'ubuntumedium_italic', arial bold italic, sans-serif;
+			color: white;
+			font-size: 11px;
+		}
+		
+		ul {
+		
+			li {
+			
+			}
+		}
+	}
+	
+	.stickers-container {
+		width: 200px;
+		height: 500px;
+		float: left;
+		position: relative;
+		
+		.sticker1 {
+			.box-shadow(2px, 3px, 10px, rgba(0,0,0,.40));
+			.rounded-corners (150px 150px 150px 150px);
+			border: white 2px solid;
+			width: 150px;
+			height: 150px;
+			.gradient(#f5f5f5, white, #f0f0f0);
+			text-align: center;
+			font-family: 'ubuntumedium', arial bold italic, sans-serif;
+			color: @xebiahardcorepink;
+			font-size: 25px;
+			letter-spacing: -0.08em;
+			position: absolute;
+			top: 40px;
+			left: 0;
+			
+			big {
+				display: block;
+				font-size: 60px;
+				letter-spacing: -0.08em;
+				padding: 25px 0 0 0;
+			}
+		}
+		
+		.sticker2 {
+			.box-shadow(4px, 5px, 10px, rgba(0,0,0,.50));
+			.rounded-corners (150px 150px 150px 150px);
+			border: @xebiapale 2px solid;
+			width: 150px;
+			height: 150px;
+			.gradient(@xebiamedium, @xebiapale, @xebiadark);
+			text-align: center;
+			font-family: 'ubuntumedium', arial bold italic, sans-serif;
+			color: white;
+			font-size: 29px;
+			letter-spacing: -0.08em;
+			position: absolute;
+			top: 150px;
+			left: 70px;
+			
+			big {
+				display: block;
+				font-size: 60px;
+				letter-spacing: -0.08em;
+				padding: 37px 0 0 0;
+			}
+		}
+		.sticker3 {
+			.box-shadow(2px, 3px, 10px, rgba(0,0,0,.40));
+			.rounded-corners (180px 180px 180px 180px);
+			border: white 2px solid;
+			width: 170px;
+			height: 170px;
+			.gradient(#f5f5f5, white, #f0f0f0);
+			text-align: center;
+			font-family: 'ubuntumedium', arial bold italic, sans-serif;
+			color: @xebiapale;
+			font-size: 19px;
+			letter-spacing: -0.08em;
+			position: absolute;
+			top: 280px;
+			left: 10px;
+			
+			big {
+				display: block;
+				font-size: 55px;
+				letter-spacing: -0.08em;
+				padding: 25px 0 0 0;
+			}
+		}
+		.sticker4 {
+			.box-shadow(3px, 4px, 10px, rgba(0,0,0,.50));
+			.rounded-corners (150px 150px 150px 150px);
+			border: @xebiapale 2px solid;
+			width: 140px;
+			height: 140px;
+			.gradient(@xebiamedium, @xebiapale, @xebiadark);
+			text-align: center;
+			font-family: 'ubuntumedium', arial bold italic, sans-serif;
+			color: white;
+			font-size: 14px;
+			letter-spacing: -0.08em;
+			position: absolute;
+			top: 370px;
+			left: 160px;
+			
+			big {
+				display: block;
+				font-size: 40px;
+				letter-spacing: -0.08em;
+				padding: 49px 0 0 0;
+			}
+		}
+		/*rebelote media query pour l'ipad - meurs steve jobs! (oups) */
+		@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+			.sticker2 {
+				left: 0;
+			}
+			.sticker3 {
+				top: 300px;
+			}
+		}
+	}
+	
+	.programme {
+	
+		padding:0px;
+
+		.cell {
+			padding: 10px 0;
+			border: #e2e2e2 1px solid;
+			text-shadow: 1px 1px 1px  white;
+			font-weight: normal;
+			font-family: 'ubuntulight', arial bold italic, sans-serif;
+			margin: 0 !important;
+			display: table-cell;
+			line-height: 1.4em;
+			text-align: center;
+		}
+		
+		.time, .header {
+			font-family: 'ubuntumedium_italic', arial bold italic, sans-serif;
+			background: #efefef;
+			color: @xebiamedium;
+		}
+		
+		.hour {
+			clear: both;
+		}
+		
+		@media only screen and (max-width: 767px) {
+			.hour {
+				margin-bottom: 30px;
+			}
+			.virtual-header {
+				display: none;
+			}
+		}
+
+		.event-type1 {
+			background-color: #cae7ea;
+		}
+		.event-type2 {
+			background-color: #f4ebf1;
+		}
+		
+		@media only screen and (min-width: 767px) {
+			.corner-tl{
+				.rounded-corners (10px 0 0 0);
+			}
+			.corner-tr{
+				.rounded-corners (0 10px 0 0);
+			}
+			.corner-bl{
+				.rounded-corners (0 0 0 10px);
+			}
+			.corner-br{
+				.rounded-corners (0 0 10px 0);
+			}
+		}
+		
+		@media only screen and (max-width: 767px) {
+			.hour .cell:first-child {
+				.rounded-corners (10px 10px 0 0);
+			}
+			.hour .cell:last-child {
+				.rounded-corners (0 0 10px 10px);
+			}
+		}
+		
+		.free-entry {
+			color: #54c0a3;
+			font-family: 'ubuntumedium_italic', arial bold italic, sans-serif;
+		}
+		.pay-entry {
+			color: #cc0022;
+			font-family: 'ubuntumedium_italic', arial bold italic, sans-serif;
+		}
+		
+		.legend {
+		
+			.color {
+				float: left;
+				height: 20px;
+				width: 20px;
+				.rounded-corners(5px 5px 5px 5px);
+				.box-shadow(0, 0, 2px, grey);
+				font-family: 'ubuntulight_italic', arial bold italic, sans-serif;
+			}
+			.text {
+				float: left;
+				padding: 0 15px 0 7px;
+				font-size: 14px;
+				line-height: 21px;
+			}
+		}
+		.legend:after {
+			.clear();
+		}
+		
+	}
+	
+	#partenaires {
+	
+		a {
+			display: inline-block;
+			margin: 10px 0;
+			opacity: 1;
+			-moz-opacity: 1;
+			-webkit-opacity: 1;
+			-o-opacity: 1;
+			.transition (opacity, .5s);
+			
+			span {
+				display: none;
+			}
+		}
+		
+		a:hover {
+			opacity: .7;
+			-moz-opacity: .7;
+			-webkit-opacity: .7;
+			-o-opacity: .7;
+		}
+		
+		.work-twitter {
+			background: url("../img/work-twitter.png") no-repeat scroll 0 0 transparent;
+			height: 35px;
+			width: 140px;
+		}
+		.work-viadeo {
+			background: url("../img/work-viadeo.png") no-repeat scroll 0 0 transparent;
+			height: 35px;
+			width: 140px;
+			margin-top: 2px;
+		}
+		.work-googleplus {
+			background: url("../img/work-googleplus.png") no-repeat scroll 0 0 transparent;
+			height: 35px;
+			width: 140px;
+		}
+		.work-linkedin {
+			background: url("../img/work-linkedin.png") no-repeat scroll 0 0 transparent;
+			height: 35px;
+			width: 140px;
+		}
+		.work-cloudera {
+			background: url("../img/work-cloudera.png") no-repeat scroll 0 0 transparent;
+			height: 35px;
+			width: 100px;
+		}
+		.work-bouygues {
+			background: url("../img/work-bouygues.png") no-repeat scroll 0 0 transparent;
+			height: 35px;
+			width: 100px;
+		}
+		.work-amazon {
+			background: url("../img/work-amazon.png") no-repeat scroll 0 0 transparent;
+			height: 35px;
+			margin-top: 2px;
+			width: 100px;
+		}
+		.work-10gen {
+			background: url("../img/work-10gen.png") no-repeat scroll 0 0 transparent;
+			height: 35px;
+			width: 100px;
+		}
+		.work-neotechnology {
+			background: url("../img/work-neotechnology.png") no-repeat scroll 0 0 transparent;
+			height: 35px;
+			width: 100px;
+		}
+		.work-datastax {
+			background: url("../img/work-datastax.png") no-repeat scroll 0 0 transparent;
+			height: 35px;
+			width: 100px;
+		}
+		.work-xebia {
+			background: url("../img/work-xebia.png") no-repeat scroll 0 0 transparent;
+			height: 35px;
+			width: 110px;
+		}
+	
+	}
