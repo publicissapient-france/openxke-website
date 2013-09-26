@@ -671,14 +671,14 @@ b i, b em, strong i, strong em, i b, i strong, em b, em strong {
 			}
 			.virtual-header {
 				display: none;
+				vertical-align: middle;
 			}
 		}
-
 		.event-type1 {
-			background-color: #cae7ea;
+			background-color: #ffffff;
 		}
-		.event-type2 {
-			background-color: #f4ebf1;
+		.event-register {
+			background-color: #ffffff;
 		}
 		
 		@media only screen and (min-width: 767px) {
