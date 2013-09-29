@@ -159,39 +159,42 @@
 	<!-- JQuery -->
 	<script>
 
-		$(document).ready(function() {
+		$(function() {
 
 			//Hauteur minimum des pages
-			minPageHeight = $(window).height()*1.2;
-			$(".page").css("min-height",minPageHeight);
+			var minPageHeight = $(window).height()*1.2;
+			$(".page").css("min-height", minPageHeight);
 
 
 			/* Egalisation de la hauteur des cellule du tableau en divs. Truc tout moisi : impossible de faire ça autrement qu'en JS*/
 
 			function resizeTableCellsHeight() {
 
-				windowWidth = $(window).width();
-				cellPadding = 10;
-				maxHeight = 0;
+				var windowWidth = $(window).width();
+				var cellPadding = 10;
+
 
 				if(windowWidth > 767) { //Paye ton magic number. Mais c'est pour coller au régles défini dans le css responsive.
 					$(".hour").each(function() {
+                        if(!$(this).hasClass('virtual-header')) {
+                            var maxHeight = 0;
 
-						$(this).children(".cell").each(function() {
-							currentHeight = $(this).height();
-							if(currentHeight>=maxHeight) {
-								maxHeight = currentHeight+(cellPadding*2);
-							}
-						});
+                            var cells = $(this).children(".cell");
+                            cells.each(function() {
+                                if(!$(this).hasClass('time')) {
+                                    var currentHeight = $(this).height();
+                                    if(currentHeight  >= maxHeight) {
+                                        maxHeight = currentHeight ;//+ (cellPadding*2);
+                                    }
+                                }
+                            });
 
-						$(this).children(".cell").each(function() {
-							$(this).css("height",maxHeight);
-						});
-
+                            cells.css("height", maxHeight);
+                        }
 					});
 				}
 				$(".valign-middle").each(function() {
-					lineHeight = $(this).height();
+					var lineHeight = $(this).height();
 					$(this).css("line-height",lineHeight+"px");
 				});
 			}
@@ -204,7 +207,7 @@
 
 			//Scroll pages
 			$(".navlink").click(function() {
-				scrollDistance = $(this).data("pos");
+
 				$("html, body").animate({
 					scrollTop: $($(this).attr("href")).offset().top + "px"
 				}, {
