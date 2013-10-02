@@ -417,7 +417,34 @@ b i, b em, strong i, strong em, i b, i strong, em b, em strong {
 			}
 		}
 	}
-	
+	.fixdate {
+			position: fixed;
+			padding: 10px;
+			top: 20px;
+			left: 10px;
+			.box-shadow(2px, 3px, 10px, rgba(0,0,0,.40));
+			.rounded-corners (180px 180px 180px 180px);
+			border: white 2px solid;
+			width: 60px;
+			height: 60px;
+			.gradient(#f5f5f5, white, #f0f0f0);
+			text-align: center;
+			font-family: 'ubuntumedium', arial bold italic, sans-serif;
+			color: @xebiapale;
+			font-size: 14px;
+			letter-spacing: -0.02em;
+
+			.big {
+				display: block;
+				font-size: 30px;
+				letter-spacing: -0.08em;
+			}
+
+			@media only screen and (max-width: 980px) {
+			visibility: hidden;
+				}
+		}
+
 	.editorial-content-on-purple {
 		color: white;
 		background: @xebiamedium;
@@ -528,7 +555,7 @@ b i, b em, strong i, strong em, i b, i strong, em b, em strong {
 	
 	.stickers-container {
 		width: 200px;
-		height: 500px;
+		height: 630px;
 		float: left;
 		position: relative;
 		
@@ -545,7 +572,7 @@ b i, b em, strong i, strong em, i b, i strong, em b, em strong {
 			font-size: 25px;
 			letter-spacing: -0.08em;
 			position: absolute;
-			top: 40px;
+			top: 20px;
 			left: 0;
 			
 			.big {
@@ -569,14 +596,14 @@ b i, b em, strong i, strong em, i b, i strong, em b, em strong {
 			font-size: 29px;
 			letter-spacing: -0.08em;
 			position: absolute;
-			top: 150px;
+			top: 140px;
 			left: 70px;
 			
 			.big {
 				display: block;
 				font-size: 60px;
 				letter-spacing: -0.08em;
-				padding: 37px 0 0 0;
+				padding: 30px 0 0 0;
 			}
 		}
 		.sticker3 {
@@ -592,7 +619,7 @@ b i, b em, strong i, strong em, i b, i strong, em b, em strong {
 			font-size: 19px;
 			letter-spacing: -0.08em;
 			position: absolute;
-			top: 280px;
+			top: 260px;
 			left: 10px;
 			
 			.big {
@@ -615,14 +642,37 @@ b i, b em, strong i, strong em, i b, i strong, em b, em strong {
 			font-size: 14px;
 			letter-spacing: -0.08em;
 			position: absolute;
-			top: 370px;
-			left: 160px;
+			top: 340px;
+			left: 150px;
 			
 			.big {
 				display: block;
 				font-size: 40px;
 				letter-spacing: -0.08em;
 				padding: 49px 0 0 0;
+			}
+		}
+		.sticker5 {
+			.box-shadow(2px, 3px, 10px, rgba(0,0,0,.40));
+			.rounded-corners (180px 180px 180px 180px);
+			border: white 2px solid;
+			width: 140px;
+			height: 140px;
+			.gradient(#f5f5f5, white, #f0f0f0);
+			text-align: center;
+			font-family: 'ubuntumedium', arial bold italic, sans-serif;
+			color: @xebiapale;
+			font-size: 19px;
+			letter-spacing: -0.08em;
+			position: absolute;
+			top: 450px;
+			left: 100px;
+			
+			.big {
+				display: block;
+				font-size: 55px;
+				letter-spacing: -0.08em;
+				padding: 25px 0 0 0;
 			}
 		}
 		/*rebelote media query pour l'ipad - meurs steve jobs! (oups) */
